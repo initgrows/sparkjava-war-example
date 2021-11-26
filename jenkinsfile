@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git credentialsId: 'Github', url: 'git@github.com:initgrows/sparkjava-war-example.git'
+            }
+        }
+        stage("var display") {
+            steps {
+                mvn clean install
+            }
+        }
+    }
+}
